@@ -11,8 +11,8 @@ router.get('/', function(req, res, next) {
 router.get('/article/add', articleController.renderAddForm);
 router.post('/article/add', articleController.addArticle);
 
-router.get('/article/:articleId', articleController.displayArticle);
 router.get('/article/', articleController.displayAll);
+router.get('/article/:articleId', articleController.displayArticle);
 router.get('/article/:articleId/edit', articleController.renderEditForm);
 router.post('/article/:articleId/edit', articleController.updateArticle);
 router.get('/article/:articleId/delete', articleController.deleteArticle);

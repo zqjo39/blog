@@ -21,5 +21,5 @@ module.exports.addReply = async function(req, res) {
         article_id: articleId,
         parent_comment_id: parentComment.id
     });
-    res.redirect('/article/${articleId}');
+    res.redirect(`/article/${articleId}`);
 }

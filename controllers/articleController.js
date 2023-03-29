@@ -23,6 +23,7 @@ module.exports.addArticle = async function(req, res) {
 };
 
 module.exports.displayArticle = async function(req, res) {
+    console.log(req.params.articleId);
     const article = await Article.findByPk(req.params.articleId, {
         include: [
             'author',
@@ -53,7 +54,7 @@ module.exports.displayAll = async function(req, res) {
 
 module.exports.renderEditForm = async function(req, res) {
     const article = await Article.findByPk(req.params.articleId);
-    res.render('articles/edit', {article});``
+    res.render('articles/edit', {article});
 };
 
 module.exports.updateArticle = async function(req, res) {
