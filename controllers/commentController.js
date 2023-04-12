@@ -9,7 +9,7 @@ module.exports.createComment = async function(req, res) {
         article_id: articleId,
     });
     res.redirect(`/article/${articleId}`)
-}
+};
 
 module.exports.addReply = async function(req, res) {
     const parentComment = await Comment.findByPk(req.params.commentId);
@@ -22,4 +22,30 @@ module.exports.addReply = async function(req, res) {
         parent_comment_id: parentComment.id
     });
     res.redirect(`/article/${articleId}`);
+};
+
+module.exports.deleteComment = async function(req, res) {
+    const comment = await Comment.findByPk(req.params.commentId);
+    await Comment.update({
+        is_deleted: true
+        }, {
+            where: {
+                id: req.params.commentId
+            }
+        }
+    );
+    res.redirect(`/article/${comment.article_id}`);
+};
+
+module.exports.deleteReply = async function(req, res) {
+    const reply = await Reply.findByPk(req.params.replyId);
+    await Reply.update({
+            is_deleted: true
+        }, {
+            where: {
+                id: req.params.replyId
+            }
+        }
+    );
+    res.redirect(`/article/${reply.article_id}`);
 }

@@ -8,7 +8,7 @@ block content
                 h1.article-title= article.title
                 if user && article.isOwnedBy(user)
                     a.button(href = `/article/${article.id}/edit`) Edit
-                if user && user.is('admin') || user.is('author') && article.isOwnedBy(user)
+                if user && user.is('admin')
                     a.button(href = `/article/${article.id}/delete`) Delete
             p.published-on Published
                 strong.emphasize #{article.friendlyPublishedDate}
